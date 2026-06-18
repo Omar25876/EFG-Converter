@@ -8,6 +8,7 @@ import 'package:efg_converter/shared/language/lang_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class LanguageSection extends StatelessWidget {
   const LanguageSection({super.key});
@@ -57,10 +58,7 @@ class LanguageSection extends StatelessWidget {
     if (alreadyActive) return;
     await context.read<LangCubit>().changeLanguage(context, code);
     if (context.mounted) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-        AppRoutes.splash,
-            (_) => false,
-      );
+      context.go(AppRoutes.splash);
     }
   }
 }
