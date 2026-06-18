@@ -73,32 +73,6 @@ class _HistoryViewState extends State<HistoryView> {
 }
 
 
-class _CountPill extends StatelessWidget {
-  final int count;
-  const _CountPill({required this.count});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
-      decoration: BoxDecoration(
-        color: accent.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(color: accent.withValues(alpha: 0.3)),
-      ),
-      child: Text(
-        '$count ${tr('conversions').toLowerCase()}',
-        style: AppTextStyles.caption.copyWith(
-          color: accent,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    );
-  }
-}
-
-// ── Empty State ────────────────────────────────────────────────────────────
-
 class _EmptyHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -154,7 +128,6 @@ class _EmptyHistory extends StatelessWidget {
   }
 }
 
-// ── List ───────────────────────────────────────────────────────────────────
 
 class _HistoryList extends StatelessWidget {
   final List<ConversionHistory> items;

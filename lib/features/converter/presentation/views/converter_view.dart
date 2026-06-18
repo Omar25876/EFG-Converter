@@ -131,6 +131,12 @@ class _ConverterViewState extends State<ConverterView>
         key: _formKey,
         child: Column(
           children: [
+            // ✅ MOVE RESULT HERE — above everything else
+            if (state is ConversionSuccess) ...[
+              ResultCard(state: state),
+              SizedBox(height: 20.h),
+            ],
+
             ExchangePanel(
               fromCurrency: _fromCurrency,
               toCurrency: _toCurrency,
@@ -162,9 +168,7 @@ class _ConverterViewState extends State<ConverterView>
                 }
               },
             ),
-            SizedBox(height: 28.h),
-            if (state is ConversionSuccess) ResultCard(state: state),
-            SizedBox(height: 85.h),
+            SizedBox(height: 100.h),
           ],
         ),
       ),

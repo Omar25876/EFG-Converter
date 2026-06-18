@@ -37,6 +37,7 @@ dependencies:
   package_info_plus: ^8.3.1
   dartz: ^0.10.1
   uuid: ^4.5.3
+  intl: ^0.20.2
 
   # Internationalization
   easy_localization: ^3.0.8
@@ -51,9 +52,7 @@ dev_dependencies:
   # Launcher icon generator (only needed during development)
   flutter_launcher_icons: ^0.14.4
 
-  # Testing
-  bloc_test: ^10.0.0
-  mocktail: ^1.0.4
+
 
 # Configuration for launcher icons (placed here, but the package is dev)
 flutter_launcher_icons:

@@ -13,7 +13,7 @@ class ConverterAppBar extends StatelessWidget {
     final c = context.colors;
 
     return SliverAppBar(
-      expandedHeight: 180.h,
+      expandedHeight: 100.h,
       floating: false,
       pinned: true,
       backgroundColor: c.scaffold,

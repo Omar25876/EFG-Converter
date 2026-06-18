@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:efg_converter/core/styles/app_colors.dart';
 import 'package:efg_converter/features/settings/presentation/widgets/about_section.dart';
 import 'package:efg_converter/features/settings/presentation/widgets/appearance_section.dart';

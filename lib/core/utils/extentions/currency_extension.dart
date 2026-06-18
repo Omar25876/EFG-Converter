@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 
 /// Extension on [String] for currency-related display helpers.
 extension CurrencyExtension on String {

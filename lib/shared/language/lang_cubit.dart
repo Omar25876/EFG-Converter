@@ -31,6 +31,7 @@ class LangCubit extends Cubit<LangState> {
       orElse: () => const Locale('en'),
     );
     await _prefs.write(StorageKeys.language, langCode);
+    if (!context.mounted) return;
     await context.setLocale(locale);
     emit(LangState(locale: locale));
   }
