@@ -5,6 +5,7 @@ import 'package:efg_converter/core/styles/colors.dart';
 import 'package:efg_converter/features/history/presentation/cubit/history_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class HistoryAppBar extends StatelessWidget {
   final HistoryCubit cubit;
@@ -158,7 +159,8 @@ class HistoryAppBar extends StatelessWidget {
                   color: c.error_, size: 18.sp),
             ),
             SizedBox(width: 12.w),
-            Text(tr('clear_history'), style: AppTextStyles.titleLarge),
+            Text(tr('clear_history'), style: AppTextStyles.titleLarge.copyWith(color: c.textSecondary_),
+            ),
           ],
         ),
         content: Text(
@@ -167,7 +169,7 @@ class HistoryAppBar extends StatelessWidget {
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => context.pop(),
             child: Text(
               tr('cancel'),
               style:
