@@ -150,7 +150,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  SizedBox(height: 32.h),
+                  SizedBox(height: 10.h),
 
                   // App name
                   AnimatedBuilder(
@@ -217,7 +217,6 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
       ),
     );
   }
-
   Widget _buildLogo() {
     return AnimatedBuilder(
       animation: _glowAnim,
@@ -226,23 +225,25 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
         height: 110.h,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          gradient:  heroGradient,
           boxShadow: [
             BoxShadow(
-              color:  primary.withValues(alpha: 0.5 * _glowAnim.value),
+              color: primary.withValues(alpha: 0.5 * _glowAnim.value),
               blurRadius: 40,
               spreadRadius: 8,
             ),
+            BoxShadow(
+              color: accent.withValues(alpha: 0.25 * _glowAnim.value),
+              blurRadius: 60,
+              spreadRadius: 4,
+            ),
           ],
         ),
-        child: Center(
-          child: Text(
-            'EFG',
-            style: TextStyle(
-              fontSize: 48.sp,
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+        child: ClipOval(
+          child: Image.asset(
+            'assets/images/launch_icon.png',
+            width: 110.w,
+            height: 110.h,
+            fit: BoxFit.cover,
           ),
         ),
       ),
