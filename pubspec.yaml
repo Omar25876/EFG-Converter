@@ -1,0 +1,77 @@
+name: efg_converter
+description: "A new Flutter project."
+
+# Prevents accidental publishing to pub.dev (private project)
+publish_to: 'none'
+
+# Version and build number
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI & Icons
+  cupertino_icons: ^1.0.8
+  flutter_screenutil: ^5.9.3
+
+  # Networking
+  dio: ^5.9.0
+  connectivity_plus: ^6.1.5
+
+  # State Management
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.7
+
+  # Routing & DI
+  go_router: ^17.2.3
+  get_it: ^9.2.1
+
+  # Storage
+  hive_flutter: ^1.1.0
+
+  # Utilities
+  package_info_plus: ^8.3.1
+  dartz: ^0.10.1
+  uuid: ^4.5.3
+
+  # Internationalization
+  easy_localization: ^3.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+
+  # Launcher icon generator (only needed during development)
+  flutter_launcher_icons: ^0.14.4
+
+  # Testing
+  bloc_test: ^10.0.0
+  mocktail: ^1.0.4
+
+# Configuration for launcher icons (placed here, but the package is dev)
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/launch_icon.png"
+  min_sdk_android: 21  # Android minimum SDK
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/translations/
+
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo/static/Cairo-Black.ttf
+        - asset: assets/fonts/Cairo/static/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo/static/Cairo-Bold.ttf
