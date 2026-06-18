@@ -180,7 +180,7 @@ class HistoryAppBar extends StatelessWidget {
             margin: EdgeInsets.only(right: 8.w, bottom: 4.h),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                context.pop();
                 cubit.clearAll();
               },
               style: ElevatedButton.styleFrom(
