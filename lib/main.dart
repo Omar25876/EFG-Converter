@@ -87,18 +87,7 @@ class _MyAppState extends State<MyApp> {
 
                   routerConfig: AppRouter.router,
                 );
-                // return MaterialApp(
-                //   navigatorKey: navigatorKey,
-                //   debugShowCheckedModeBanner: false,
-                //   theme: LightTheme.theme,
-                //   darkTheme: DarkTheme.theme,
-                //   themeMode: themeState.themeMode,
-                //   locale: langState.locale,
-                //   localizationsDelegates: context.localizationDelegates,
-                //   supportedLocales: context.supportedLocales,
-                //   initialRoute: AppRoutes.splash,
-                //   onGenerateRoute: RouteGenerator.generateRoute,
-                // );
+
               },
             );
           },

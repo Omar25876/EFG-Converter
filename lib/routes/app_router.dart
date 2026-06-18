@@ -7,8 +7,8 @@ import 'package:efg_converter/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-final GlobalKey<NavigatorState> navigatorKey =
-GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> _shellKey   = GlobalKey<NavigatorState>();
 
 class AppRouter {
   AppRouter._();
@@ -16,54 +16,61 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: navigatorKey,
     initialLocation: AppRoutes.splash,
-
     routes: [
       GoRoute(
         path: AppRoutes.splash,
-        builder: (context, state) => const SplashView(),
+        builder: (_, __) => const SplashView(),
       ),
 
-      GoRoute(
-        path: AppRoutes.converter,
-        builder: (context, state) =>
-        const HomeNavigationBarView(
-          child: ConverterView(),
-        ),
-      ),
-
-      GoRoute(
-        path: AppRoutes.history,
-        builder: (context, state) =>
-        const HomeNavigationBarView(
-          child: HistoryView(),
-        ),
-      ),
-
-      GoRoute(
-        path: AppRoutes.settings,
-        builder: (context, state) =>
-        const HomeNavigationBarView(
-          child: SettingsView(),
-        ),
+      // ShellRoute keeps HomeNavigationBarView alive across tab switches
+      ShellRoute(
+        navigatorKey: _shellKey,
+        builder: (context, state, child) =>
+            HomeNavigationBarView(child: child),
+        routes: [
+          GoRoute(
+            path: AppRoutes.converter,
+            pageBuilder: (_, state) => _fadePage(
+              key: state.pageKey,
+              child: const ConverterView(),
+            ),
+          ),
+          GoRoute(
+            path: AppRoutes.history,
+            pageBuilder: (_, state) => _fadePage(
+              key: state.pageKey,
+              child: const HistoryView(),
+            ),
+          ),
+          GoRoute(
+            path: AppRoutes.settings,
+            pageBuilder: (_, state) => _fadePage(
+              key: state.pageKey,
+              child: const SettingsView(),
+            ),
+          ),
+        ],
       ),
     ],
 
-    errorBuilder: (context, state) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('404'),
-        ),
-        body: Center(
-          child: Text(
-            'Route Not Found\n${state.uri}',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      );
-    },
+    errorBuilder: (_, state) => Scaffold(
+      body: Center(child: Text('Route not found\n${state.uri}')),
+    ),
   );
+
+  static CustomTransitionPage<void> _fadePage({
+    required LocalKey key,
+    required Widget child,
+  }) {
+    return CustomTransitionPage<void>(
+      key: key,
+      child: child,
+      transitionDuration: const Duration(milliseconds: 220),
+      reverseTransitionDuration: const Duration(milliseconds: 180),
+      transitionsBuilder: (_, animation, __, child) => FadeTransition(
+        opacity: CurvedAnimation(parent: animation, curve: Curves.easeOut),
+        child: child,
+      ),
+    );
+  }
 }
